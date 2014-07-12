@@ -15,6 +15,29 @@ add_filter('cn-results-filter', 'filter_mentors');
 add_action('wp_ajax_filter_mentors','filter_mentors');
 add_action('wp_ajax_nopriv_filter_mentors', 'filter_mentors');
 add_action("wp_ajax_get_filter_mentors", "filter_mentors");
+
+// echo "<script type='text/javascript'>alert('$plugins_url');</script>";
+add_action ( 'wp_enqueue_scripts', 'connections_child_styles');
+add_action ( 'wp_enqueue_scripts', 'connections_child_scripts');
+function connections_child_styles(){
+	$plugins_url = plugins_url();
+	$plugins_url .= '/connections-child/';
+	wp_enqueue_style( 'multiselect' ,$plugins_url . 'inc/css/jquery.multiselect.css');
+	wp_enqueue_style( 'multiselect-filter' ,$plugins_url . 'inc/css/jquery.multiselect.filter.css');
+	wp_enqueue_style( 'jquery-ui' ,$plugins_url . 'inc/css/jquery-ui.css');
+	wp_enqueue_style( 'jquery-ui-structure' ,$plugins_url . 'inc/css/jquery-ui.structure.css');
+	wp_enqueue_style( 'jquery-ui-theme' ,$plugins_url . 'inc/css/jquery-ui.theme.css');
+}
+function connections_child_scripts(){
+	$plugins_url = plugins_url();
+	$plugins_url .= '/connections-child/';
+	wp_enqueue_script( 'filter-mentors-button' ,$plugins_url . 'inc/js/filter-mentors-button.js' ,array( 'jquery' ),null, $in_footer = true);
+	wp_enqueue_script( 'jquery-ui' ,$plugins_url . 'inc/js/jquery-ui.js' ,array( 'jquery' ),null, $in_footer = true);
+	wp_enqueue_script( 'jquery-multiselect' ,$plugins_url . 'inc/js/jquery.multiselect.js' ,array( 'jquery' ),null, $in_footer = true);
+	wp_enqueue_script( 'multiselect' ,$plugins_url . 'inc/js/multiselect.js' ,array( 'jquery' ),null, $in_footer = true);
+	wp_enqueue_script( 'jquery-multiselect-filter' ,$plugins_url. 'inc/js/jquery.multiselect.filter.js' ,array( 'jquery' ),null, $in_footer = true);
+}
+
 function filter_mentors() {
 	$retriever = new cnRetrieve();
 	if(count($_POST) === 0){
