@@ -11,14 +11,24 @@ Author: Robert Westenberger
 Version: 0.1
 Author URI: http://www.rmwdeveloper.com
 */
+
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+
+$plugins_url = plugin_dir_path(__FILE__);
+require $plugins_url . 'mentors_filter_bar.php';
 add_filter('cn-results-filter', 'filter_mentors');
 add_action('wp_ajax_filter_mentors','filter_mentors');
 add_action('wp_ajax_nopriv_filter_mentors', 'filter_mentors');
 add_action("wp_ajax_get_filter_mentors", "filter_mentors");
 
-// echo "<script type='text/javascript'>alert('$plugins_url');</script>";
+
 add_action ( 'wp_enqueue_scripts', 'connections_child_styles');
 add_action ( 'wp_enqueue_scripts', 'connections_child_scripts');
+
+
+
+
 function connections_child_styles(){
 	$plugins_url = plugins_url();
 	$plugins_url .= '/connections-child/';
@@ -86,5 +96,8 @@ function enqueue_script(){
 }
 
 add_action('wp_enqueue_scripts', 'enqueue_script');
+
+
+
 
 ?>
