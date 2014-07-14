@@ -7,15 +7,8 @@
  * @license    GPL-2.0+
  * @link       http://rmwdeveloper@gmail.com
  * 
- *
- * @wordpress-plugin
- * Plugin Name:       Connections-Child Template
- * Plugin URI:        http://rmwdeveloper@gmail.com
- * Description:       Template that outputs hierarchical mentor categories
- * Version:           0.1
- * Author:            Robert Westenberger
- * Author URI:        http://rmwdeveloper@gmail.com
  */
+
 
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;

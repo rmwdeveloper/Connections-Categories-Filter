@@ -18,10 +18,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 // class Test extends cnShortcode_Connections{
 
 // }
+
 add_action('__before_content', 'mentors_filter_bar');
 function mentors_filter_bar(){
+	$page_id = get_the_ID();
+	if($page_id != 10) return;
 	$html = '';
 	$html .= '<div id="mentor_filters">';
+	$html .= '<div id="mentor_filters_message">';
+	$html .= '<h4>Filter by Industry Experience or Areas of Expertise to find the right mentor to fit your needs.</h2>';
+	$html .= '</div>';
 			/* Instantiate categories*/
 			$retrieve = new cnRetrieve();
 			$categories = $retrieve -> categories();

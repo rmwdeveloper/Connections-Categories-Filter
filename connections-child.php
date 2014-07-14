@@ -4,9 +4,9 @@
  * @version 0.1
  */
 /*
-Plugin Name: Connections Child Search
+Plugin Name: Connections Categories Filter
 Plugin URI: http://www.rmwdeveloper.com
-Description: Extends Connections-Child to add a search bar and filterable categories. 
+Description: Extends Connections-Child to add filterable categories for industry experience and mentor expertise. 
 Author: Robert Westenberger
 Version: 0.1
 Author URI: http://www.rmwdeveloper.com
@@ -14,7 +14,7 @@ Author URI: http://www.rmwdeveloper.com
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-
+require 'card-default.php';
 $plugins_url = plugin_dir_path(__FILE__);
 require $plugins_url . 'mentors_filter_bar.php';
 add_filter('cn-results-filter', 'filter_mentors');
